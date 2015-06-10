@@ -47,7 +47,7 @@ debug
 # TODO Enhance dfu-util to handle matching devices by devnum
 # TODO Enhance dfu-util to ignore status (don't wait if specified)
 dfu-util -l | grep "Found DFU:" | while read -r LINE; do
-	echo "AAA $LINE"
+	echo "$LINE"
 	# Extract USB ID, Bootloader Name and Serial
 	USBID=$(echo $LINE | sed -e 's/^.*\[\(.*\)\].*$/\1/')
 	NAME=$(echo $LINE | sed -e 's/^.*name="\([^"]\+\)".*$/\1/')
@@ -65,7 +65,7 @@ dfu-util -l | grep "Found DFU:" | while read -r LINE; do
 done
 
 # Wait for USB to initialize
-sleep 2
+sleep 2.5
 
 # Check to see if USB device successfully initialized
 lsusb -d $USB_ID
