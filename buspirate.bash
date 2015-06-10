@@ -36,7 +36,7 @@ debug() {
 # Find actual directory of this script and enter it
 ORIG_PATH=$(pwd)
 FIRMWARE=${ORIG_PATH}/${FIRMWARE}
-cd "$(realpath $(dirname "$0"))"
+cd "$(dirname $(realpath "$0"))"
 
 
 # First check for toolchain

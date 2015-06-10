@@ -1,11 +1,11 @@
 # Install file for kiibohd-manufacturing
 
 all_install() {
-	# Install gems
-	gem install --local /usr/local/kiibohd/gems/ffi*.gem
-	gem install --local /usr/local/kiibohd/gems/libusb*.gem
-	gem install --local /usr/local/kiibohd/gems/serialport*.gem
+	# Update udev rule list
+	udevadm control --reload-rules
+}
 
+all_remove() {
 	# Update udev rule list
 	udevadm control --reload-rules
 }
@@ -16,5 +16,13 @@ post_install() {
 
 post_upgrade() {
 	all_install
+}
+
+pre_upgrade() {
+	all_remove
+}
+
+pre_remove() {
+	all_remove
 }
 

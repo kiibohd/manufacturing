@@ -5,9 +5,11 @@ pkgrel=1
 pkgdesc="Has all the necessary tools to use machine as a Kiibohd Firmware Flashing Station. Used in manufacturing."
 url="http://kiibohd.com"
 arch=('any')
-pkgver=1.0
+pkgver=r2.a456ebf
 license=("GPL3")
 depends=('ruby' 'libusb' 'dfu-util' 'git')
+optdepends=('namcap' 'pacgem' 'ruby-serialport' 'ruby-ffi' 'ruby-libusb')
+install=$pkgname.install
 
 source=("programmer::git+https://github.com/kiibohd/programmer.git")
 
@@ -18,11 +20,6 @@ buildtargets=('IC60')
 
 pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	# Download required ruby gems
-	gem fetch ffi libusb serialport || return 1
 }
 
 build() {
@@ -47,20 +44,19 @@ package() {
 
 	# Install buspirate ruby api for flashing
 	mkdir -p $pkgdir/usr/local/kiibohd || return 1
-	cp -r ../programmer $pkgdir/usr/local/kiibohd/. || return 1
+	cp -r programmer $pkgdir/usr/local/kiibohd/. || return 1
+
+	# Install gem generator script
+	cp ../gemgen.bash $pkgdir/usr/local/kiibohd/. || return 1
 
 	# Install base manufacturing scripts
 	cp ../../*.bash $pkgdir/usr/local/kiibohd/. || return 1
 
 	# Install scripts and firmware binaries for each buildtarget
-	mkdir -p $pkgdir/usr/local/bin
+	mkdir -p $pkgdir/usr/local/bin || return 1
 	for target in "${buildtargets[@]}"; do
 		cp -r ../../$target $pkgdir/usr/local/kiibohd/. || return 1
 		ln -fs /usr/local/kiibohd/${target}/flash.bash $pkgdir/usr/local/bin/${target}.flash || return 1
 	done
-
-	# Install ruby gems for later installation
-	mkdir -p $pkgdir/usr/local/kiibohd/gems
-	cp ffi*.gem libusb*.gem serialport*.gem $pkgdir/usr/local/kiibohd/gems/.
 }
 

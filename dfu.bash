@@ -33,7 +33,7 @@ debug() {
 # Find actual directory of this script and enter it
 ORIG_PATH=$(pwd)
 FIRMWARE=${ORIG_PATH}/${FIRMWARE}
-cd "$(realpath $(dirname "$0"))"
+cd "$(dirname $(realpath "$0"))"
 
 # Check to make sure there are valid USB IDs to use dfu-util
 lsusb -d $USB_BOOT_ID

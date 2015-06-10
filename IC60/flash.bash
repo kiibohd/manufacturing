@@ -15,7 +15,7 @@ debug() {
 
 
 # Find actual directory of this script and enter it
-cd "$(realpath $(dirname "$0"))"
+cd "$(dirname $(realpath "$0"))"
 
 # Set mode if specified
 if [ "$#" -gt "0" ]; then
