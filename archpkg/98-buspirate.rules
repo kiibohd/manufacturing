@@ -1,0 +1,5 @@
+# Bus pirate v3
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", GROUP="users", MODE="0666", SYMLINK+="buspirate"
+# Bus pirate v4
+SUBSYSTEM=="tty", ATTRS{idVendor}=="04d8", ATTRS{idProduct}=="fb00", GROUP="users", MODE="0666", SYMLINK+="buspirate"
+

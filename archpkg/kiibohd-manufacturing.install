@@ -1,0 +1,20 @@
+# Install file for kiibohd-manufacturing
+
+all_install() {
+	# Install gems
+	gem install --local /usr/local/kiibohd/gems/ffi*.gem
+	gem install --local /usr/local/kiibohd/gems/libusb*.gem
+	gem install --local /usr/local/kiibohd/gems/serialport*.gem
+
+	# Update udev rule list
+	udevadm control --reload-rules
+}
+
+post_install() {
+	all_install
+}
+
+post_upgrade() {
+	all_install
+}
+
