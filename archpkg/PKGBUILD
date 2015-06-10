@@ -5,9 +5,9 @@ pkgrel=1
 pkgdesc="Has all the necessary tools to use machine as a Kiibohd Firmware Flashing Station. Used in manufacturing."
 url="http://kiibohd.com"
 arch=('any')
-pkgver=r2.a456ebf
+pkgver=r3.0bf2365
 license=("GPL3")
-depends=('ruby' 'libusb' 'dfu-util' 'git')
+depends=('ruby' 'libusb' 'dfu-util' 'git' 'lsof')
 optdepends=('namcap' 'pacgem' 'ruby-serialport' 'ruby-ffi' 'ruby-libusb')
 install=$pkgname.install
 

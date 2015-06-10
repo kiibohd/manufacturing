@@ -64,6 +64,9 @@ dfu-util -l | grep "Found DFU:" | while read -r LINE; do
 	break
 done
 
+# Wait for USB to initialize
+sleep 2
+
 # Check to see if USB device successfully initialized
 lsusb -d $USB_ID
 RETVAL=$?
