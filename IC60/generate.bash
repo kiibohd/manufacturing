@@ -37,6 +37,9 @@ if [ ! -d ../controller ]; then
 	cd ..
 	git clone https://github.com/kiibohd/controller.git
 	cd -
+	cd ../controller
+	git clone https://github.com/kiibohd/kll.git
+	cd -
 fi
 cd ../controller
 
