@@ -87,6 +87,9 @@ for DEV in $DEVICES; do
 		kill $PID
 	done
 
+	# Before doing anything to the tty, make sure it has nice settings
+	stty -F $DEV -icrnl -imaxbel -opost -onlcr -isig -icanon -echo
+
 	# Prepare polling
 	# Device has a very small buffer, must start polling before sending anything
 	cat $DEV > $TMPFILE &
