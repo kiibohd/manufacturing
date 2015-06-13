@@ -29,9 +29,10 @@ fi
 
 # Check mode
 case "$1" in
+# Flash Mode
 "flash")
 	# Generate commander script
-echo "
+	echo "
 power on
 Sleep 10
 rx 10
@@ -48,9 +49,11 @@ q
 	RETVAL=$?
 	sleep 0.5 # Wait for Device/USB to initialize before continuing
 	;;
+
+# Erase Mode
 "erase")
 	# Generate commander script
-echo "
+	echo "
 power on
 Sleep 10
 rx 10
@@ -68,6 +71,40 @@ q
 
 	RETVAL=$?
 	;;
+
+# Reset to bootloader mode
+"bootloader")
+	# Generate commander script
+	echo "
+rx 10
+r0
+r1
+q
+" > "${TMPSCRIPT}"
+	cat ${TMPSCRIPT}
+	# Attempt to reset chip to bootloader
+	# Udev rules are required to run commands without root priviledges (see 99-jink.rules)
+	"${TOOLCHAIN}"/JLinkExe -CommanderScript "${TMPSCRIPT}"
+
+	RETVAL=$?
+	;;
+
+# Reset Mode
+"reset")
+	# Generate commander script
+	echo "
+r
+q
+" > "${TMPSCRIPT}"
+	cat ${TMPSCRIPT}
+	# Attempt to reset chip to bootloader
+	# Udev rules are required to run commands without root priviledges (see 99-jink.rules)
+	"${TOOLCHAIN}"/JLinkExe -CommanderScript "${TMPSCRIPT}"
+
+	RETVAL=$?
+	;;
+
+# Invalid Mode
 *)
 	echo "ERROR: '$1' is an invalid mode"
 	RETVAL=1
