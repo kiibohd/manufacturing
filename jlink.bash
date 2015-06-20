@@ -27,6 +27,9 @@ if [ ! -d "${TOOLCHAIN}" ]; then
 	exit 1
 fi
 
+# Make sure ADDRESS is in hex
+ADDRESS=$(printf "0x%x" $((${ADDRESS})))
+
 # Check mode
 case "$1" in
 # Flash Mode
