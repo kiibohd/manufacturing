@@ -5,7 +5,7 @@
 # Uses TMPSCRIPT to generate/run batch script
 
 # Expected exported variables
-# TOOLCHAIN - Path to McHCK ruby programmer toolchain (all)
+# TOOLCHAIN - Path to Segger JLink (all)
 # FIRMWARE  - Path to firmware image to flash (flash)
 # ADDRESS   - Starting address to flash firmware from (flash)
 # DEVICE    - Name of the chip series

@@ -62,3 +62,28 @@ In general these are:
 
 The `generate.bash` script is used to compile the specific git branch/revision of the bootloader and firmware binary images. This is only used when building the package.
 
+
+# Misc Scripts
+
+Here's an example of a `.bashrc` configuration that takes advantage of the manufacturing infrastructure.
+
+```bash
+###### Flasher ######
+alias mk20dx128vlf5='export DEVICE="MK20DX128XXX5"; export CLASS="K20_50"'
+alias mk20dx256vlh7='export DEVICE="MK20DX256XXX7"; export CLASS="K20_72"'
+
+jlink() {
+	export TOOLCHAIN=$HOME/Downloads/jlink/JLink_Linux_V496m_x86_64
+	export FIRMWARE=$2
+	export ADDRESS=$3
+	$HOME/Source/manufacturing/jlink.bash $1
+}
+
+buspirate() {
+	export TOOLCHAIN=$HOME/Source/manufacturing/archpkg/programmer
+	export FIRMWARE=$2
+	export ADDRESS=$3
+	$HOME/Source/manufacturing/buspirate.bash $1
+}
+```
+
