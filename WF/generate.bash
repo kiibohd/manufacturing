@@ -2,21 +2,20 @@
 # Generates bootloader and firmware images for manufacturing scripts
 # Jacob Alexander - 2015
 # TODO - Finalize git revisions and branches
-# TODO - Finalize layout
 
-NAME_BOOTLOADER="ICED_bootloader"
-NAME_FIRMWARE="ICED_firmware"
+NAME_BOOTLOADER="WF_bootloader"
+NAME_FIRMWARE="WF_firmware"
 BOOTLOADER_BRANCH="master"
 BOOTLOADER_REV="59c14fcdea7403288dab85b64b66c6daaa8404fc"
 FIRMWARE_BRANCH="master"
-FIRMWARE_REV="79ee501e03a6ea1ee84f33c23a45b8fdc3873f43"
+FIRMWARE_REV="59c14fcdea7403288dab85b64b66c6daaa8404fc"
 KLL_BRANCH="master"
 KLL_REV="80c948fa333cb5623a198184fefe636517666dcd"
 CHIP="mk20dx256vlh7"
-SCAN="MDErgo1"
-BASEMAP="defaultMap leftHand slave1 rightHand"
+SCAN="WhiteFox"
+BASEMAP="defaultMap"
 DEFAULTMAP="stdFuncMap"
-PARTIALMAPS="hhkbpro2"
+PARTIALMAPS="whitefox"
 
 
 # Convenience debug/error checker

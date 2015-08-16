@@ -43,6 +43,10 @@ if [ ! -d ../controller ]; then
 fi
 cd ../controller
 
+# Make sure repo is up to date
+git checkout master
+git pull
+
 
 ##############
 # Bootloader #
@@ -50,7 +54,6 @@ cd ../controller
 
 # Change to branch and revision
 git checkout $BOOTLOADER_BRANCH
-git pull origin $BOOTLOADER_BRANCH
 git checkout $BOOTLOADER_REV
 cd -
 
@@ -79,15 +82,15 @@ cd -
 
 # Select kll version
 cd ../controller/kll
+git checkout master
+git pull
 git checkout $KLL_BRANCH
-git pull origin $KLL_BRANCH
 git checkout $KLL_REV
 cd -
 
 # Change to branch and revision
 cd ../controller
 git checkout $FIRMWARE_BRANCH
-git pull origin $FIRMWARE_BRANCH
 git checkout $FIRMWARE_REV
 cd -
 
