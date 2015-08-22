@@ -6,7 +6,10 @@
 # - jlink
 
 # Find actual directory of this script and enter it
-cd "$(dirname $(realpath "$0"))"
+DIR="$(dirname $(realpath "$0"))"/../$(basename "$0" | cut -d. -f1)
+if [[ $DIR != *"erase"* ]]; then
+	cd $DIR
+fi
 
 # Set mode if specified
 if [ "$#" -gt "0" ]; then

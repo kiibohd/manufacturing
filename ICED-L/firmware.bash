@@ -2,7 +2,10 @@
 # Flashes firmware on a Kinetis Device (SWD)
 
 # Find actual directory of this script and enter it
-cd "$(dirname $(realpath "$0"))"
+DIR="$(dirname $(realpath "$0"))"/../$(basename "$0" | cut -d. -f1)
+if [[ $DIR != *"firmware"* ]]; then
+	cd $DIR
+fi
 
 # Set mode if specified
 if [ "$#" -gt "0" ]; then
@@ -16,7 +19,7 @@ fi
 # Firmware #
 ############
 
-export FIRMWARE=$(ls ICED_firmware.*.dfu.bin)
+export FIRMWARE=$(ls $(basename "$PWD")_firmware.*.dfu.bin)
 export DEVICE="mk20dx256vlh7"
 export DFU_NAME="Kiibohd DFU"
 export USB_BOOT_ID="1c11:b007"

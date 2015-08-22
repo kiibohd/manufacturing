@@ -15,7 +15,8 @@ debug() {
 
 
 # Find actual directory of this script and enter it
-cd "$(dirname $(realpath "$0"))"
+# Determine directory based on name
+cd "$(dirname $(realpath "$0"))"/../$(basename "$0" | cut -d. -f1)
 
 # Set mode if specified
 if [ "$#" -gt "0" ]; then
