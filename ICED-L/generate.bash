@@ -15,10 +15,10 @@ debug() {
 cd "$(realpath $(dirname "$0"))"
 
 # Load configuration
-source config.bash
+source config_$(basename $(dirname "$0")).bash
 
 # Remove old .bin files
-rm *.bin
+rm $(basename $(dirname "$0"))_*.bin
 
 # Make sure controller code is available and up to date
 if [ ! -d ../controller ]; then
