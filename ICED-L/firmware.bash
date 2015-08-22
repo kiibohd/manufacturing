@@ -16,7 +16,7 @@ fi
 # Firmware #
 ############
 
-export FIRMWARE=$(ls ICED_firmware.*.dfu.bin)
+export FIRMWARE=$(ls ICED-L_firmware.*.dfu.bin)
 export DEVICE="mk20dx256vlh7"
 export DFU_NAME="Kiibohd DFU"
 export USB_BOOT_ID="1c11:b007"
