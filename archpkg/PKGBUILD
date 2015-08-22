@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Has all the necessary tools to use machine as a Kiibohd Firmware Flashing Station. Used in manufacturing."
 url="http://kiibohd.com"
 arch=('any')
-pkgver=r12.0af268c
+pkgver=r13.8421eca
 license=("GPL3")
 depends=('ruby' 'libusb' 'dfu-util' 'git' 'lsof')
 optdepends=('namcap' 'pacgem' 'ruby-serialport' 'ruby-ffi' 'ruby-libusb')
@@ -16,7 +16,7 @@ source=("programmer::git+https://github.com/kiibohd/programmer.git")
 md5sums=('SKIP')
 
 makedepends=('python' 'arm-none-eabi-binutils' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib' 'cmake' 'git' 'dfu-util' 'ctags' 'ruby')
-buildtargets=('IC60' 'ICED' 'WF')
+buildtargets=('IC60' 'ICED-L' 'ICED-R' 'WF')
 
 pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"

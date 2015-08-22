@@ -1,16 +1,15 @@
 #!/bin/bash
 # Generates bootloader and firmware images for manufacturing scripts
 # Jacob Alexander - 2015
-# TODO - Finalize git revisions and branches
 
 NAME_BOOTLOADER="WF_bootloader"
 NAME_FIRMWARE="WF_firmware"
 BOOTLOADER_BRANCH="master"
-BOOTLOADER_REV="59c14fcdea7403288dab85b64b66c6daaa8404fc"
+BOOTLOADER_REV="85586c574ac72a160593e7675aa9029d9b2a6713"
 FIRMWARE_BRANCH="master"
-FIRMWARE_REV="59c14fcdea7403288dab85b64b66c6daaa8404fc"
+FIRMWARE_REV="85586c574ac72a160593e7675aa9029d9b2a6713"
 KLL_BRANCH="master"
-KLL_REV="80c948fa333cb5623a198184fefe636517666dcd"
+KLL_REV="99cd939f8a6d9f847c737776f2b45c081728d351"
 CHIP="mk20dx256vlh7"
 SCAN="WhiteFox"
 BASEMAP="defaultMap"

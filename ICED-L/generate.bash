@@ -1,23 +1,6 @@
 #!/bin/bash
 # Generates bootloader and firmware images for manufacturing scripts
 # Jacob Alexander - 2015
-# TODO - Finalize git revisions and branches
-# TODO - Finalize layout
-
-NAME_BOOTLOADER="ICED_bootloader"
-NAME_FIRMWARE="ICED_firmware"
-BOOTLOADER_BRANCH="master"
-BOOTLOADER_REV="59c14fcdea7403288dab85b64b66c6daaa8404fc"
-FIRMWARE_BRANCH="master"
-FIRMWARE_REV="79ee501e03a6ea1ee84f33c23a45b8fdc3873f43"
-KLL_BRANCH="master"
-KLL_REV="80c948fa333cb5623a198184fefe636517666dcd"
-CHIP="mk20dx256vlh7"
-SCAN="MDErgo1"
-BASEMAP="defaultMap leftHand slave1 rightHand"
-DEFAULTMAP="stdFuncMap"
-PARTIALMAPS="hhkbpro2"
-
 
 # Convenience debug/error checker
 debug() {
@@ -30,6 +13,9 @@ debug() {
 
 # Find actual directory of this script and enter it
 cd "$(realpath $(dirname "$0"))"
+
+# Load configuration
+source config.bash
 
 # Remove old .bin files
 rm *.bin
