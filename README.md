@@ -48,6 +48,9 @@ Flashing is straight-forward.
 ## Supported Devices
 
 * IC60.flash
+* ICED-R.flash
+* ICED-L.flash
+* WF.flash
 
 
 ## Backend Scripts
