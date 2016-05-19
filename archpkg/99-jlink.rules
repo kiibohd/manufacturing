@@ -1,4 +1,4 @@
-BUS!="usb", ACTION!="add", SUBSYSTEM!=="usb_device", GOTO="jlink_rules_end"
+#ACTION!="add", SUBSYSTEM!=="usb_device", GOTO="jlink_rules_end"
 #
 # Give all users read and write access.
 # Note: NOT all combinations are supported by J-Link right now. Some are reserved for future use, but already added here
@@ -77,4 +77,4 @@ ATTR{idProduct}=="101F", ATTR{idVendor}=="1366", MODE="666"
 #
 # End of list
 #
-LABEL="jlink_rules_end"
+#LABEL="jlink_rules_end"
