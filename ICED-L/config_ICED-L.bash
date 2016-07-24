@@ -1,13 +1,13 @@
 #!/bin/bash
 # Configuration for generate.bash
-# Jacob Alexander - 2015
+# Jacob Alexander - 2015-2016
 
 NAME_BOOTLOADER="ICED_bootloader"
 NAME_FIRMWARE="ICED-L_firmware"
 BOOTLOADER_BRANCH="master"
-BOOTLOADER_REV="26915c4d5bb56a7dc1deec22472cb73ad4e4e0de"
+BOOTLOADER_REV="77218a641bc866daf30ef5e16d00e832bfcfaca7"
 FIRMWARE_BRANCH="master"
-FIRMWARE_REV="26915c4d5bb56a7dc1deec22472cb73ad4e4e0de"
+FIRMWARE_REV="77218a641bc866daf30ef5e16d00e832bfcfaca7"
 KLL_BRANCH="master"
 KLL_REV="6135cbb8329eff480c4100a1b46557f690ea604b"
 CHIP="mk20dx256vlh7"

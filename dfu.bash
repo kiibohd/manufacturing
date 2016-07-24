@@ -51,16 +51,16 @@ dfu-util -l | grep "Found DFU:" | while read -r LINE; do
 	# Extract USB ID, Bootloader Name and Serial
 	USBID=$(echo $LINE | sed -e 's/^.*\[\(.*\)\].*$/\1/')
 	NAME=$(echo $LINE | sed -e 's/^.*name="\([^"]\+\)".*$/\1/')
-	SERIAL=$(echo $LINE | sed -e 's/^.*serial="\([^"]\+\)".*$/\1/')
+	SERIAL=$(echo $LINE | sed -e 's/^.*serial="[^"]\+ - \([^"]\+\)".*$/\1/')
 	DEVNUM=$(echo $LINE | sed -e 's/^.*devnum=\([^,]\+\).*$/\1/')
 
 	# Compare Expected Name, Serial, and USB Boot IDs
-	if [ "$NAME" != "$DFU_NAME" ]; then continue; fi
-	if [ "$DEVICE" != "$SERIAL" ]; then continue; fi
-	if [ "$USBID" != "$USB_BOOT_ID" ]; then continue; fi
+	if [ "$NAME" != "$DFU_NAME" ]; then echo "INVALID NAME: '$DFU_NAME' != '$NAME'"; continue; fi
+	if [ "$DEVICE" != "$SERIAL" ]; then echo "INVALID DEVICE: '$SERIAL' != '$DEVICE'"; continue; fi
+	if [ "$USBID" != "$USB_BOOT_ID" ]; then echo "INVALID USBID: '$USB_BOOT_ID' != '$USBID'"; continue; fi
 
 	echo "Flashing devnum $DEVNUM"
-	dfu-util --device $USB_BOOT_ID --serial $DEVICE  --download $FIRMWARE
+	dfu-util --device $USB_BOOT_ID --download $FIRMWARE
 	break
 done
 
