@@ -56,19 +56,21 @@ fi
 # Detect which class of chip has been connected to the bus pirate
 # Udev rules have been applied to name the buspirate as /dev/buspirate (instead of something like /dev/ttyUSB0)
 # By default only root can access serial devices on Linux
-DETECTED_CLASS=$(ruby "${TOOLCHAIN}"/flash.rb name=buspirate:dev=/dev/buspirate --detect)
-RETVAL=$?
+if [ "${1}" != "erase" ]; then
+	DETECTED_CLASS=$(ruby "${TOOLCHAIN}"/flash.rb name=buspirate:dev=/dev/buspirate --detect)
+	RETVAL=$?
 
-# Check if bus flashing cable is attached correctly
-if [ "$RETVAL" -ne "0" ]; then
-	echo "ERROR: Cannot detect device. Check flashing cable. Possibly a soldering issue."
-fi
-debug
+	# Check if bus flashing cable is attached correctly
+	if [ "$RETVAL" -ne "0" ]; then
+		echo "ERROR: Cannot detect device. Check flashing cable. Possibly a soldering issue."
+	fi
+	debug
 
-# Make sure the detected class matches the expected class
-if [ "${DETECTED_CLASS}" != "${FAMILY}" ]; then
-	echo "ERROR: Invalid microcontroller detected: '${DETECTED_CLASS}'. Expected: '${FAMILY}'"
-	exit 5
+	# Make sure the detected class matches the expected class
+	if [ "${DETECTED_CLASS}" != "${FAMILY}" ]; then
+		echo "ERROR: Invalid microcontroller detected: '${DETECTED_CLASS}'. Expected: '${FAMILY}'"
+		exit 5
+	fi
 fi
 
 # Check mode
